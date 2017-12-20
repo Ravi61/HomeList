@@ -22,6 +22,7 @@ class PropertyListVC: RefreshVC {
             propertyList.delegate = self
         }
     }
+
     @IBOutlet weak var filterButton: UIButton! {
         didSet {
             let title = String.attributed(string: AppConstants.FontIcon.filter,
@@ -32,20 +33,20 @@ class PropertyListVC: RefreshVC {
             filterButton.clipsToBounds = true
         }
     }
-    
+
     var viewModel: PropertyListViewModelRepresentable?
     private let bag = DisposeBag()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setupDependency()
     }
-    
+
     func setupDependency() {
         guard let viewModel = viewModel else { return }
-        
+
         viewModel.tableItemsFetched.bind(to: propertyList.rx.items) { tableView, row, cellViewModel in
             let cell = tableView.dequeueCellOfType(PropertyCardListCell.self, forIndex: IndexPath(row: row, section: 0))
             cell.viewModel = cellViewModel
@@ -53,7 +54,7 @@ class PropertyListVC: RefreshVC {
             viewModel.checkPagination.onNext(row)
             return cell
         }.disposed(by: bag)
-        
+
         viewModel.loaderTrigger.subscribe(onNext: { [unowned self] state in
             switch state {
             case .animate:
@@ -66,5 +67,4 @@ class PropertyListVC: RefreshVC {
 }
 
 extension PropertyListVC: UITableViewDelegate {
-    
 }

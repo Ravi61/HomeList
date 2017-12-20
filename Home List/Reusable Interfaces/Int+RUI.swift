@@ -16,7 +16,7 @@ extension Int {
         currencyFormatter.numberStyle = .currency
         currencyFormatter.maximumFractionDigits = 0
         currencyFormatter.locale = Locale(identifier: "en_IN")
-        
+
         let amountString = currencyFormatter.string(from: NSNumber(value: self)) ?? "\(self)"
         return amountString
     }

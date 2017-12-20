@@ -9,6 +9,6 @@
 import Foundation
 
 struct AppUtility {
-    
-//    static func 
+
+    //    static func
 }

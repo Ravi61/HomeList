@@ -13,7 +13,7 @@ protocol PropertyCardListViewModelRepresentable {
     // MARK: Input
     var callButtonTrigger: PublishSubject<String> { get }
     var favouriteButtonTrigger: PublishSubject<Void> { get }
-    
+
     // MARK: Output
     var propertyBasicDetails: Observable<(name: String, address: String)> { get }
     var propertyAmount: Observable<String> { get }
@@ -24,14 +24,14 @@ protocol PropertyCardListViewModelRepresentable {
 }
 
 class PropertyCardListViewModel: PropertyCardListViewModelRepresentable {
-    
+
     private var model: PropertyCardModel
     private var bag = DisposeBag()
-    
+
     // MARK: Input
     var callButtonTrigger: PublishSubject<String> = PublishSubject<String>()
     var favouriteButtonTrigger: PublishSubject<Void> = PublishSubject<Void>()
-    
+
     // MARK: Output
     var propertyBasicDetails: Observable<(name: String, address: String)>
         = Observable<(name: String, address: String)>.just(("", ""))
@@ -40,38 +40,38 @@ class PropertyCardListViewModel: PropertyCardListViewModelRepresentable {
     var propertyArea: Observable<Int> = Observable<Int>.just(0)
     var sponsoredImageWidthTrigger: Observable<Int> = Observable.just(0)
     var favouriteSelectionTrigger: Observable<Bool> = Observable.just(false)
-    
+
     init(model: PropertyCardModel) {
         self.model = model
-        
+
         let address = "at \(model.address)"
         propertyBasicDetails = Observable.just((model.name, address))
-        
+
         let amount = model.amount.formatAsMoney()
         propertyAmount = Observable.just(amount)
-        
+
         let furnishing = model.furnishing.getValue()
         let desc = "\(furnishing)\n\(model.bathrooms) Bathrooms"
         propertyDesc = Observable.just(desc)
-        
+
         propertyArea = Observable.just(model.area)
-        
+
         callButtonTrigger.subscribe(onNext: { [unowned self] number in
             self.call(number)
         }).disposed(by: bag)
-        
+
         favouriteSelectionTrigger = model.isFavourite.asObservable()
-        
+
         favouriteButtonTrigger.subscribe(onNext: { [unowned self] _ in
             let state = self.model.isFavourite.value
             self.model.isFavourite.value = !state
         }).disposed(by: bag)
-        
+
         if model.isSponsored {
             sponsoredImageWidthTrigger = Observable.just(30)
         }
     }
-    
+
     func call(_ number: String) {
         if let url = URL(string: "tel://\(number)"), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)

@@ -9,21 +9,20 @@
 import UIKit
 
 extension UIColor {
-    
+
     static var brandPrimary: UIColor {
         return UIColor(named: "brandPrimary") ?? UIColor.red
     }
-    
+
     static var backgroundGray: UIColor {
         return UIColor(named: "backgroundGray") ?? UIColor.gray
     }
-    
+
     static var darkText: UIColor {
         return UIColor(named: "darkTextColor") ?? UIColor.darkGray
     }
-    
+
     static var lightText: UIColor {
         return UIColor(named: "lightTextColor") ?? UIColor.lightGray
     }
 }
-

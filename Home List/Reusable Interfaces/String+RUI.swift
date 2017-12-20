@@ -11,7 +11,9 @@ import UIKit
 extension String {
     static func attributed(string: String, color: UIColor, font: UIFont) -> NSMutableAttributedString {
         return NSMutableAttributedString(string: string,
-                                         attributes: [NSAttributedStringKey.font: font,
-                                                      NSAttributedStringKey.foregroundColor: color])
+                                         attributes: [
+                                             NSAttributedStringKey.font: font,
+                                             NSAttributedStringKey.foregroundColor: color
+        ])
     }
 }

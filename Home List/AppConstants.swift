@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AppConstants {    
+struct AppConstants {
     struct FontIcon {
         static let call = "\u{e900}"
         static let close = "\u{e901}"

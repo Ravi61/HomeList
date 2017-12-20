@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 class PropertyCardListCell: UITableViewCell {
-    
+
     @IBOutlet weak var sponsoredImage: UIImageView! {
         didSet {
             sponsoredImage.contentMode = .scaleAspectFit
@@ -19,6 +19,7 @@ class PropertyCardListCell: UITableViewCell {
             sponsoredImage.image = #imageLiteral(resourceName: "sponsoredIcon")
         }
     }
+
     @IBOutlet weak var propertyNameLabel: UILabel! {
         didSet {
             propertyNameLabel.text = ""
@@ -26,6 +27,7 @@ class PropertyCardListCell: UITableViewCell {
             propertyNameLabel.font = UIFont.helveticaBold(withSize: 16)
         }
     }
+
     @IBOutlet weak var propertyAddressLabel: UILabel! {
         didSet {
             propertyAddressLabel.text = ""
@@ -33,6 +35,7 @@ class PropertyCardListCell: UITableViewCell {
             propertyAddressLabel.font = UIFont.helvetica(withSize: 14)
         }
     }
+
     @IBOutlet weak var favouriteButton: UIButton!
     @IBOutlet weak var callButton: UIButton! {
         didSet {
@@ -41,11 +44,13 @@ class PropertyCardListCell: UITableViewCell {
             callButton.setAttributedTitle(title, for: .normal)
         }
     }
+
     @IBOutlet weak var displayImage: UIImageView! {
         didSet {
             displayImage.contentMode = .scaleAspectFill
         }
     }
+
     @IBOutlet weak var amountLabel: UILabel! {
         didSet {
             amountLabel.text = ""
@@ -55,6 +60,7 @@ class PropertyCardListCell: UITableViewCell {
             amountLabel.numberOfLines = 0
         }
     }
+
     @IBOutlet weak var descLabel: UILabel! {
         didSet {
             descLabel.text = ""
@@ -64,6 +70,7 @@ class PropertyCardListCell: UITableViewCell {
             descLabel.numberOfLines = 0
         }
     }
+
     @IBOutlet weak var areaLabel: UILabel! {
         didSet {
             areaLabel.text = ""
@@ -71,56 +78,57 @@ class PropertyCardListCell: UITableViewCell {
             areaLabel.numberOfLines = 0
         }
     }
+
     @IBOutlet weak var sponsoredImageWidthConstraint: NSLayoutConstraint!
-    
+
     var viewModel: PropertyCardListViewModelRepresentable? {
         didSet {
             setupDependency()
         }
     }
-    
+
     private let bag = DisposeBag()
-    
+
     override func prepareForReuse() {
         sponsoredImageWidthConstraint.constant = 30
     }
-    
+
     override func awakeFromNib() {
         backgroundColor = UIColor.clear
     }
-    
+
     func setupDependency() {
         guard let viewModel = viewModel else { return }
-        
+
         viewModel.sponsoredImageWidthTrigger.subscribe(onNext: { [unowned self] width in
             self.sponsoredImageWidthConstraint.constant = CGFloat(width)
         }).disposed(by: bag)
-        
+
         viewModel.propertyAmount.subscribe(onNext: { [unowned self] amount in
             self.amountLabel.text = amount
         }).disposed(by: bag)
-        
+
         viewModel.propertyArea.subscribe(onNext: { [unowned self] area in
             let areaAttributedString = String.attributed(string: "\(area) Sq. ft", color: .darkGray, font: .helveticaBold(withSize: 16))
             let subtitleAttributedString = String.attributed(string: "\nBuilt up Area", color: .lightText, font: .helveticaLight(withSize: 14))
             areaAttributedString.append(subtitleAttributedString)
-            
+
             self.areaLabel.attributedText = areaAttributedString
         }).disposed(by: bag)
-        
-        viewModel.propertyBasicDetails.subscribe(onNext: { [unowned self] (name, address) in
+
+        viewModel.propertyBasicDetails.subscribe(onNext: { [unowned self] name, address in
             self.propertyNameLabel.text = name
             self.propertyAddressLabel.text = address
         }).disposed(by: bag)
-        
+
         viewModel.propertyDesc.subscribe(onNext: { [unowned self] desc in
             self.descLabel.text = desc
         }).disposed(by: bag)
-        
+
         favouriteButton.rx
             .tap
             .bind(to: viewModel.favouriteButtonTrigger).disposed(by: bag)
-        
+
         viewModel.favouriteSelectionTrigger.subscribe(onNext: { [unowned self] state in
             if state {
                 let selectedTitle = String.attributed(string: AppConstants.FontIcon.favoriteFillled,
@@ -132,7 +140,7 @@ class PropertyCardListCell: UITableViewCell {
                 self.favouriteButton.setAttributedTitle(unselectedTitle, for: .normal)
             }
         }).disposed(by: bag)
-        
+
         callButton.rx
             .tap
             .map {

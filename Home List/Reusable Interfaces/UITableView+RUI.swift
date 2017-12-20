@@ -13,7 +13,7 @@ extension UITableView {
     func registerCell(withIdentifier identifier: String) {
         register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
     }
-    
+
     func setAutomaticDimension() {
         rowHeight = UITableViewAutomaticDimension
         estimatedRowHeight = 200

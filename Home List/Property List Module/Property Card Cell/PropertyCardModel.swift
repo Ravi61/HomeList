@@ -13,7 +13,7 @@ enum Furnishing: String {
     case full = "FULLY_FURNISHED"
     case semi = "SEMI_FURNISHED"
     case none = "NOT_FURNISHED"
-    
+
     func getValue() -> String {
         switch self {
         case .semi:
@@ -35,7 +35,7 @@ struct PropertyCardModel {
     var area: Int
     var isFavourite: Variable<Bool> = Variable<Bool>(false)
     var isSponsored: Bool
-    
+
     init(name: String, address: String, amount: Int, furnishing: Furnishing,
          bathrooms: Int, area: Int, isFavourite: Bool, isSponsored: Bool) {
         self.name = name
