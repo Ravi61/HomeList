@@ -16,6 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let viewmodel = PropertyListViewModel()
+        let controller = UIStoryboard.init(name: "HomeListStoryboard", bundle: nil).instantiateViewController(withIdentifier: "PropertyListVC") as! PropertyListVC
+        controller.viewModel = viewmodel
+        let nvc = UINavigationController.init(rootViewController: controller)
+        window?.rootViewController = nvc
+        window?.makeKeyAndVisible()
+        
         return true
     }
 

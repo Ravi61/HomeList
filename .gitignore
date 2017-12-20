@@ -1,0 +1,77 @@
+S X temporary files that should never be committed
+.DS_Store
+*.swp
+profile
+
+####
+# Xcode temporary files that should never be committed
+*~.nib
+
+####
+# Objective-C/Swift specific
+*.hmap
+*.ipa
+
+####
+# Xcode build files
+DerivedData/
+build/
+Builds/
+
+#####
+# Xcode private settings (window sizes, bookmarks, breakpoints, custom executables, smart groups)
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+####
+# Xcode 4
+xcuserdata
+!xcschemes
+# Xcode 4
+*.moved-aside
+*.xcscmblueprint
+xcschememanagement.plist
+
+####
+# XCode 4 workspaces - more detailed
+!xcshareddata
+!default.xcworkspace
+*.xcworkspacedata
+
+
+####
+# Xcode 5
+*.xccheckout
+*.xcuserstate
+
+####
+# pod files
+Pods/*
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/#source-control
+
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
