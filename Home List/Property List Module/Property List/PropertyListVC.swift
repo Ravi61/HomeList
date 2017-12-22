@@ -49,7 +49,7 @@ class PropertyListVC: RefreshVC, UITableViewDelegate {
         guard let viewModel = viewModel else { return }
 
         viewModel.tableItemsFetched.bind(to: propertyList.rx.items) { tableView, row, cellViewModel in
-            let cell = tableView.dequeueReusableCell(withIdentifier: PropertyCardListCell.className, for: IndexPath(row: row, section: 0)) as! PropertyCardListCell
+            let cell = self.propertyList.dequeueCellOfType(PropertyCardListCell.self, forIndex: IndexPath(row: row, section: 0))
             cell.viewModel = cellViewModel
             cell.selectionStyle = .none
             viewModel.checkPagination.onNext(row)
@@ -71,7 +71,7 @@ class PropertyListVC: RefreshVC, UITableViewDelegate {
             .disposed(by: bag)
         
         viewModel.filterTrigger.subscribe(onNext: { [unowned self] model in
-            let controller = UIStoryboard(name: "HomeListStoryboard", bundle: nil).instantiateViewController(withIdentifier: "FiltersVC") as! FiltersVC
+            let controller = FiltersVC.instantiate(fromAppStoryboard: .home)
             controller.viewModel = model
             let nvc = UINavigationController(rootViewController: controller)
             self.present(nvc, animated: true, completion: nil)

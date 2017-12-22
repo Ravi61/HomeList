@@ -129,10 +129,10 @@ class PropertyCardListCell: UITableViewCell {
         }).disposed(by: bag)
 
         favouriteButton.rx
-            .tap.debug("button pressed \(self.propertyNameLabel.text)")
+            .tap.debug("favourite button pressed \(self.propertyNameLabel.text!)")
             .bind(to: viewModel.favouriteButtonTrigger).disposed(by: bag)
 
-        viewModel.favouriteSelectionTrigger.debug("test").subscribe(onNext: { [unowned self] state in
+        viewModel.favouriteSelectionTrigger.debug("favourite button change \(self.propertyNameLabel.text!)").subscribe(onNext: { [unowned self] state in
             if state {
                 let selectedTitle = String.attributed(string: AppConstants.FontIcon.favoriteFillled,
                                                       color: .brandPrimary, font: .fontIcon(ofSize: 26))
@@ -155,6 +155,6 @@ class PropertyCardListCell: UITableViewCell {
             .tap
             .map {
                 return "1234567890"
-            }.bind(to: viewModel.callButtonTrigger).disposed(by: bag)
+            }.debug("call button press \(self.propertyNameLabel.text!)").bind(to: viewModel.callButtonTrigger).disposed(by: bag)
     }
 }

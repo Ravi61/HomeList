@@ -9,23 +9,6 @@
 import Foundation
 import RxSwift
 
-enum Furnishing: String {
-    case full = "Fully Furnished"
-    case semi = "Semi Furnished"
-    case none = "Unfurnished"
-
-    func getAPIValue() -> String {
-        switch self {
-        case .semi:
-            return "SEMI_FURNISHED"
-        case .full:
-            return "FULLY_FURNISHED"
-        case .none:
-            return "NOT_FURNISHED"
-        }
-    }
-}
-
 struct PropertyCardModel {
     var name: String
     var address: String

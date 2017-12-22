@@ -29,6 +29,7 @@ class ApartmentTypeCellViewModel {
     init(model: ApartmentTypeModel) {
         self.model = model
         
+        // prepare filter based on selection
         itemSelected.subscribe(onNext: { [unowned self] index in
             let state = self.model.types[index].selected
             self.model.types[index].selected = !state

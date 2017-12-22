@@ -59,6 +59,23 @@ enum Property: String {
     }
 }
 
+enum Furnishing: String {
+    case full = "Fully Furnished"
+    case semi = "Semi Furnished"
+    case none = "Unfurnished"
+    
+    func getAPIValue() -> String {
+        switch self {
+        case .semi:
+            return "SEMI_FURNISHED"
+        case .full:
+            return "FULLY_FURNISHED"
+        case .none:
+            return "NOT_FURNISHED"
+        }
+    }
+}
+
 class FiltersVC: UIViewController {
 
     @IBOutlet weak var searchIconLabel: UILabel! {

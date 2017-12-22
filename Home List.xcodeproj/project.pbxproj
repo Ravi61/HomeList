@@ -36,6 +36,7 @@
 		412258231FEBEDD800A7649A /* TagCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412258221FEBEDD800A7649A /* TagCellLayout.swift */; };
 		412258261FEBEE1A00A7649A /* ApartmentTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412258241FEBEE1A00A7649A /* ApartmentTypeCell.swift */; };
 		412258271FEBEE1A00A7649A /* ApartmentTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 412258251FEBEE1A00A7649A /* ApartmentTypeCell.xib */; };
+		4125F10D1FEDA0D700BDE85A /* AppStoryboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4125F10C1FEDA0D700BDE85A /* AppStoryboardHelper.swift */; };
 		416DACAF1FEBFAB500AED21A /* ApartmentTypeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416DACAE1FEBFAB500AED21A /* ApartmentTypeCellViewModel.swift */; };
 		416DACB11FEC469600AED21A /* FiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416DACB01FEC469600AED21A /* FiltersViewModel.swift */; };
 		4187937C1FEA6B4400DBAC8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4187937B1FEA6B4400DBAC8D /* AppDelegate.swift */; };
@@ -90,6 +91,7 @@
 		412258221FEBEDD800A7649A /* TagCellLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCellLayout.swift; sourceTree = "<group>"; };
 		412258241FEBEE1A00A7649A /* ApartmentTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentTypeCell.swift; sourceTree = "<group>"; };
 		412258251FEBEE1A00A7649A /* ApartmentTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApartmentTypeCell.xib; sourceTree = "<group>"; };
+		4125F10C1FEDA0D700BDE85A /* AppStoryboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoryboardHelper.swift; sourceTree = "<group>"; };
 		416DACAE1FEBFAB500AED21A /* ApartmentTypeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentTypeCellViewModel.swift; sourceTree = "<group>"; };
 		416DACB01FEC469600AED21A /* FiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewModel.swift; sourceTree = "<group>"; };
 		418793781FEA6B4400DBAC8D /* Home List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Home List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,6 +266,7 @@
 			children = (
 				412258041FEAC99D00A7649A /* Font Icon */,
 				412257F31FEA96EA00A7649A /* AppConstants.swift */,
+				4125F10C1FEDA0D700BDE85A /* AppStoryboardHelper.swift */,
 				4122580F1FEAF72100A7649A /* ResponseDecodable.swift */,
 				4122580D1FEAEF8F00A7649A /* PropertyListModel.swift */,
 				4122580B1FEAEC6600A7649A /* RefreshVC.swift */,
@@ -549,6 +552,7 @@
 				4122581E1FEBE1C100A7649A /* TagCell.swift in Sources */,
 				4122580C1FEAEC6600A7649A /* RefreshVC.swift in Sources */,
 				412258101FEAF72100A7649A /* ResponseDecodable.swift in Sources */,
+				4125F10D1FEDA0D700BDE85A /* AppStoryboardHelper.swift in Sources */,
 				416DACAF1FEBFAB500AED21A /* ApartmentTypeCellViewModel.swift in Sources */,
 				4187937C1FEA6B4400DBAC8D /* AppDelegate.swift in Sources */,
 			);

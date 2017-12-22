@@ -92,7 +92,7 @@ extension PropertyListViewModel {
                 let model: PropertyListModel = try response.mapObject()
                 self?.extractTableItems(model: model, isFilter: isFilter)
             } catch {
-                print("Unkwon error")
+                print("Unknown error")
             }
         }
     }
