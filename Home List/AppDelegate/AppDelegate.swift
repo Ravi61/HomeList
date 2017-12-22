@@ -18,9 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UIApplication.shared.statusBarStyle = .lightContent
 
-        let viewmodel = PropertyListViewModel()
+        let viewModel = PropertyListViewModel()
         let controller = PropertyListVC.instantiate(fromAppStoryboard: .home)
-        controller.viewModel = viewmodel
+        controller.viewModel = viewModel
         let nvc = UINavigationController(rootViewController: controller)
         window?.rootViewController = nvc
         window?.makeKeyAndVisible()
