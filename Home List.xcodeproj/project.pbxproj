@@ -18,7 +18,6 @@
 		412257F01FEA910F00A7649A /* PropertyCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412257EF1FEA910F00A7649A /* PropertyCardModel.swift */; };
 		412257F21FEA961200A7649A /* String+RUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412257F11FEA961200A7649A /* String+RUI.swift */; };
 		412257F41FEA96EA00A7649A /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412257F31FEA96EA00A7649A /* AppConstants.swift */; };
-		412257F61FEA978300A7649A /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412257F51FEA978300A7649A /* AppUtility.swift */; };
 		412257F81FEA97D500A7649A /* Int+RUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412257F71FEA97D500A7649A /* Int+RUI.swift */; };
 		412257FB1FEAAA3C00A7649A /* PropertyListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412257FA1FEAAA3C00A7649A /* PropertyListVC.swift */; };
 		412257FD1FEAAA4F00A7649A /* HomeListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 412257FC1FEAAA4F00A7649A /* HomeListStoryboard.storyboard */; };
@@ -29,6 +28,16 @@
 		4122580A1FEADF5D00A7649A /* NetworkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412258091FEADF5D00A7649A /* NetworkUtility.swift */; };
 		4122580C1FEAEC6600A7649A /* RefreshVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4122580B1FEAEC6600A7649A /* RefreshVC.swift */; };
 		4122580E1FEAEF8F00A7649A /* PropertyListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4122580D1FEAEF8F00A7649A /* PropertyListModel.swift */; };
+		412258101FEAF72100A7649A /* ResponseDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4122580F1FEAF72100A7649A /* ResponseDecodable.swift */; };
+		412258121FEB07CD00A7649A /* UIViewController+RUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412258111FEB07CD00A7649A /* UIViewController+RUI.swift */; };
+		412258171FEBA5DA00A7649A /* FiltersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412258161FEBA5DA00A7649A /* FiltersVC.swift */; };
+		4122581E1FEBE1C100A7649A /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4122581C1FEBE1C100A7649A /* TagCell.swift */; };
+		4122581F1FEBE1C100A7649A /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4122581D1FEBE1C100A7649A /* TagCell.xib */; };
+		412258231FEBEDD800A7649A /* TagCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412258221FEBEDD800A7649A /* TagCellLayout.swift */; };
+		412258261FEBEE1A00A7649A /* ApartmentTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412258241FEBEE1A00A7649A /* ApartmentTypeCell.swift */; };
+		412258271FEBEE1A00A7649A /* ApartmentTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 412258251FEBEE1A00A7649A /* ApartmentTypeCell.xib */; };
+		416DACAF1FEBFAB500AED21A /* ApartmentTypeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416DACAE1FEBFAB500AED21A /* ApartmentTypeCellViewModel.swift */; };
+		416DACB11FEC469600AED21A /* FiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416DACB01FEC469600AED21A /* FiltersViewModel.swift */; };
 		4187937C1FEA6B4400DBAC8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4187937B1FEA6B4400DBAC8D /* AppDelegate.swift */; };
 		4187937E1FEA6B4400DBAC8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4187937D1FEA6B4400DBAC8D /* ViewController.swift */; };
 		418793811FEA6B4400DBAC8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4187937F1FEA6B4400DBAC8D /* Main.storyboard */; };
@@ -63,7 +72,6 @@
 		412257EF1FEA910F00A7649A /* PropertyCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCardModel.swift; sourceTree = "<group>"; };
 		412257F11FEA961200A7649A /* String+RUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RUI.swift"; sourceTree = "<group>"; };
 		412257F31FEA96EA00A7649A /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		412257F51FEA978300A7649A /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		412257F71FEA97D500A7649A /* Int+RUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+RUI.swift"; sourceTree = "<group>"; };
 		412257FA1FEAAA3C00A7649A /* PropertyListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListVC.swift; sourceTree = "<group>"; };
 		412257FC1FEAAA4F00A7649A /* HomeListStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeListStoryboard.storyboard; sourceTree = "<group>"; };
@@ -74,6 +82,16 @@
 		412258091FEADF5D00A7649A /* NetworkUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtility.swift; sourceTree = "<group>"; };
 		4122580B1FEAEC6600A7649A /* RefreshVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshVC.swift; sourceTree = "<group>"; };
 		4122580D1FEAEF8F00A7649A /* PropertyListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListModel.swift; sourceTree = "<group>"; };
+		4122580F1FEAF72100A7649A /* ResponseDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDecodable.swift; sourceTree = "<group>"; };
+		412258111FEB07CD00A7649A /* UIViewController+RUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+RUI.swift"; sourceTree = "<group>"; };
+		412258161FEBA5DA00A7649A /* FiltersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersVC.swift; sourceTree = "<group>"; };
+		4122581C1FEBE1C100A7649A /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		4122581D1FEBE1C100A7649A /* TagCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
+		412258221FEBEDD800A7649A /* TagCellLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCellLayout.swift; sourceTree = "<group>"; };
+		412258241FEBEE1A00A7649A /* ApartmentTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentTypeCell.swift; sourceTree = "<group>"; };
+		412258251FEBEE1A00A7649A /* ApartmentTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApartmentTypeCell.xib; sourceTree = "<group>"; };
+		416DACAE1FEBFAB500AED21A /* ApartmentTypeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentTypeCellViewModel.swift; sourceTree = "<group>"; };
+		416DACB01FEC469600AED21A /* FiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewModel.swift; sourceTree = "<group>"; };
 		418793781FEA6B4400DBAC8D /* Home List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Home List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4187937B1FEA6B4400DBAC8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4187937D1FEA6B4400DBAC8D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +148,7 @@
 				412257F11FEA961200A7649A /* String+RUI.swift */,
 				412257F71FEA97D500A7649A /* Int+RUI.swift */,
 				412257FE1FEAB1BA00A7649A /* UITableView+RUI.swift */,
+				412258111FEB07CD00A7649A /* UIViewController+RUI.swift */,
 			);
 			path = "Reusable Interfaces";
 			sourceTree = "<group>";
@@ -137,9 +156,9 @@
 		412257E61FEA7A2B00A7649A /* Property List Module */ = {
 			isa = PBXGroup;
 			children = (
-				412258001FEAB31400A7649A /* PropertyListViewModel.swift */,
-				412257FC1FEAAA4F00A7649A /* HomeListStoryboard.storyboard */,
-				412257FA1FEAAA3C00A7649A /* PropertyListVC.swift */,
+				412258151FEBA59F00A7649A /* Filters */,
+				412258131FEBA58900A7649A /* Property List */,
+				412258141FEBA59400A7649A /* Storyboard */,
 				412257F91FEAAA1100A7649A /* Property Card Cell */,
 			);
 			path = "Property List Module";
@@ -159,8 +178,65 @@
 		412258041FEAC99D00A7649A /* Font Icon */ = {
 			isa = PBXGroup;
 			children = (
+				412258051FEACF6300A7649A /* icomoon.ttf */,
 			);
 			path = "Font Icon";
+			sourceTree = "<group>";
+		};
+		412258131FEBA58900A7649A /* Property List */ = {
+			isa = PBXGroup;
+			children = (
+				412257FA1FEAAA3C00A7649A /* PropertyListVC.swift */,
+				412258001FEAB31400A7649A /* PropertyListViewModel.swift */,
+			);
+			path = "Property List";
+			sourceTree = "<group>";
+		};
+		412258141FEBA59400A7649A /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				412257FC1FEAAA4F00A7649A /* HomeListStoryboard.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		412258151FEBA59F00A7649A /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				416DACB41FEC56BE00AED21A /* Filter View Controller */,
+				416DACB31FEC56A800AED21A /* Tag Collection Cell */,
+				416DACB21FEC569300AED21A /* Filter Group Cell */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		416DACB21FEC569300AED21A /* Filter Group Cell */ = {
+			isa = PBXGroup;
+			children = (
+				412258241FEBEE1A00A7649A /* ApartmentTypeCell.swift */,
+				416DACAE1FEBFAB500AED21A /* ApartmentTypeCellViewModel.swift */,
+				412258251FEBEE1A00A7649A /* ApartmentTypeCell.xib */,
+			);
+			path = "Filter Group Cell";
+			sourceTree = "<group>";
+		};
+		416DACB31FEC56A800AED21A /* Tag Collection Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4122581C1FEBE1C100A7649A /* TagCell.swift */,
+				4122581D1FEBE1C100A7649A /* TagCell.xib */,
+			);
+			path = "Tag Collection Cell";
+			sourceTree = "<group>";
+		};
+		416DACB41FEC56BE00AED21A /* Filter View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				412258221FEBEDD800A7649A /* TagCellLayout.swift */,
+				412258161FEBA5DA00A7649A /* FiltersVC.swift */,
+				416DACB01FEC469600AED21A /* FiltersViewModel.swift */,
+			);
+			path = "Filter View Controller";
 			sourceTree = "<group>";
 		};
 		4187936F1FEA6B4400DBAC8D = {
@@ -186,14 +262,13 @@
 		4187937A1FEA6B4400DBAC8D /* Home List */ = {
 			isa = PBXGroup;
 			children = (
-				412258051FEACF6300A7649A /* icomoon.ttf */,
 				412258041FEAC99D00A7649A /* Font Icon */,
 				412257F31FEA96EA00A7649A /* AppConstants.swift */,
+				4122580F1FEAF72100A7649A /* ResponseDecodable.swift */,
 				4122580D1FEAEF8F00A7649A /* PropertyListModel.swift */,
 				4122580B1FEAEC6600A7649A /* RefreshVC.swift */,
 				412258071FEADE7200A7649A /* API.swift */,
 				412258091FEADF5D00A7649A /* NetworkUtility.swift */,
-				412257F51FEA978300A7649A /* AppUtility.swift */,
 				412257DD1FEA70D500A7649A /* Reusable Interfaces */,
 				412257E61FEA7A2B00A7649A /* Property List Module */,
 				4187937B1FEA6B4400DBAC8D /* AppDelegate.swift */,
@@ -319,6 +394,8 @@
 				412257FD1FEAAA4F00A7649A /* HomeListStoryboard.storyboard in Resources */,
 				418793861FEA6B4400DBAC8D /* LaunchScreen.storyboard in Resources */,
 				412258061FEACF6300A7649A /* icomoon.ttf in Resources */,
+				412258271FEBEE1A00A7649A /* ApartmentTypeCell.xib in Resources */,
+				4122581F1FEBE1C100A7649A /* TagCell.xib in Resources */,
 				418793831FEA6B4400DBAC8D /* Assets.xcassets in Resources */,
 				418793811FEA6B4400DBAC8D /* Main.storyboard in Resources */,
 			);
@@ -377,12 +454,14 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -446,24 +525,31 @@
 			files = (
 				412258011FEAB31400A7649A /* PropertyListViewModel.swift in Sources */,
 				412257E11FEA712200A7649A /* RoundedView.swift in Sources */,
+				416DACB11FEC469600AED21A /* FiltersViewModel.swift in Sources */,
+				412258231FEBEDD800A7649A /* TagCellLayout.swift in Sources */,
+				412258121FEB07CD00A7649A /* UIViewController+RUI.swift in Sources */,
 				412257E81FEA7A5800A7649A /* UIView+RUI.swift in Sources */,
 				4122580A1FEADF5D00A7649A /* NetworkUtility.swift in Sources */,
 				412257F81FEA97D500A7649A /* Int+RUI.swift in Sources */,
 				4187937E1FEA6B4400DBAC8D /* ViewController.swift in Sources */,
+				412258261FEBEE1A00A7649A /* ApartmentTypeCell.swift in Sources */,
 				412257EC1FEA8D4C00A7649A /* UIFont+RUI.swift in Sources */,
 				412257EE1FEA8E6800A7649A /* PropertyCardListViewModel.swift in Sources */,
 				412257F21FEA961200A7649A /* String+RUI.swift in Sources */,
+				412258171FEBA5DA00A7649A /* FiltersVC.swift in Sources */,
 				4122580E1FEAEF8F00A7649A /* PropertyListModel.swift in Sources */,
 				412257DF1FEA70EA00A7649A /* CardView.swift in Sources */,
 				412257F41FEA96EA00A7649A /* AppConstants.swift in Sources */,
 				412257EA1FEA7D3900A7649A /* UIColor+RUI.swift in Sources */,
-				412257F61FEA978300A7649A /* AppUtility.swift in Sources */,
 				412257E41FEA7A1800A7649A /* PropertyCardListCell.swift in Sources */,
 				412257FF1FEAB1BA00A7649A /* UITableView+RUI.swift in Sources */,
 				412257FB1FEAAA3C00A7649A /* PropertyListVC.swift in Sources */,
 				412257F01FEA910F00A7649A /* PropertyCardModel.swift in Sources */,
 				412258081FEADE7200A7649A /* API.swift in Sources */,
+				4122581E1FEBE1C100A7649A /* TagCell.swift in Sources */,
 				4122580C1FEAEC6600A7649A /* RefreshVC.swift in Sources */,
+				412258101FEAF72100A7649A /* ResponseDecodable.swift in Sources */,
+				416DACAF1FEBFAB500AED21A /* ApartmentTypeCellViewModel.swift in Sources */,
 				4187937C1FEA6B4400DBAC8D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

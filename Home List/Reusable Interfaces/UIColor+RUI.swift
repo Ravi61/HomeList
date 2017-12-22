@@ -25,4 +25,16 @@ extension UIColor {
     static var lightText: UIColor {
         return UIColor(named: "lightTextColor") ?? UIColor.lightGray
     }
+    
+    static var darkBrandPrimary: UIColor {
+        return UIColor(named: "switchColor") ?? UIColor.red
+    }
+    
+    static var filterBackgroundGray: UIColor {
+        return UIColor(named: "filterBackgroundGray") ?? UIColor.red
+    }
+    
+    static var brandGreen: UIColor {
+        return UIColor(named: "brandGreen") ?? UIColor.red
+    }
 }

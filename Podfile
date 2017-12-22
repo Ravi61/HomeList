@@ -10,6 +10,7 @@ target 'Home List' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Alamofire'
+  pod 'SDWebImage'
 
   target 'Home ListTests' do
     inherit! :search_paths

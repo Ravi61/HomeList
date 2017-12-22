@@ -22,8 +22,8 @@ struct OtherParam: Codable {
     let city: String?
     let count: Int?
     let regionId: String?
-    let searchToken: AnyObject?
-    let topPropertyId: AnyObject?
+    let searchToken: String?
+    let topPropertyId: String?
     let totalCount: Int?
 
     enum CodingKeys: String, CodingKey {
@@ -49,7 +49,7 @@ struct PropertyData: Codable {
     let availableFrom: Int?
     let balconies: Int?
     let bathroom: Int?
-    let buildingId: AnyObject?
+    let buildingId: String?
     let buildingType: String?
     let city: String?
     let creationDate: Int?
@@ -61,14 +61,14 @@ struct PropertyData: Codable {
     let facing: String?
     let facingDesc: String?
     let floor: Int?
-    let forLease: AnyObject?
+    let forLease: Bool?
     let furnishing: String?
     let furnishingDesc: String?
     let gym: Bool?
     let id: String?
-    let inactiveReason: AnyObject?
-    let inactiveReasonDesc: AnyObject?
-    let lastActivationDate: AnyObject?
+    let inactiveReason: String?
+    let inactiveReasonDesc: String?
+    let lastActivationDate: Date?
     let lastUpdateDate: Int?
     let latitude: Float?
     let leaseType: String?
@@ -78,7 +78,7 @@ struct PropertyData: Codable {
     let localityId: String?
     let location: String?
     let longitude: Float?
-    let managed: AnyObject?
+    let managed: String?
     let nbLocality: String?
     let negotiable: Bool?
     let ownerId: String?
@@ -90,12 +90,12 @@ struct PropertyData: Codable {
     let pinCode: Int?
     let powerBackup: String?
     let propertyAge: Int?
-    let propertyCode: AnyObject?
+    let propertyCode: String?
     let propertySize: Int?
     let propertyTitle: String?
     let propertyType: String?
     let rent: Int?
-    let score: AnyObject?
+    let score: Score?
     let secondaryTitle: String?
     let sharedAccomodation: Bool?
     let shortUrl: String?
@@ -149,4 +149,11 @@ struct AmenitiesMap: Codable {
     let SERVANT: Bool?
     let STP: Bool?
     let VP: Bool?
+}
+
+struct Score : Codable {
+    
+    let lastUpdatedDate : Int?
+    let lifestyle : Float?
+    let transit : Float?
 }

@@ -12,7 +12,7 @@ import Alamofire
 class API {
 
     enum Endpoint {
-        case getProperties(withPage: Int)
+        case getProperties(withPage: Int, apartmentFilter: String, propertyFilter: String, furnishingFilter: String)
 
         var method: HTTPMethod {
             switch self {
@@ -37,8 +37,8 @@ class API {
 
         public var path: String {
             switch self {
-            case let .getProperties(count):
-                return NetworkUtility.getPropertiesURL(withPage: count)
+            case let .getProperties(pageCount, apartmentFilter, propertyFilter, furnishingFilter):
+                return NetworkUtility.getPropertiesURL(withPage: pageCount, apartmentFilter: apartmentFilter, propertyFilter: propertyFilter, furnishingFilter: furnishingFilter)
             }
         }
 
@@ -50,13 +50,13 @@ class API {
         }
     }
 
-    static func request(_ endpoint: API.Endpoint, completionHandler: @escaping (DataResponse<Data>) -> Void) {
+    static func request(_ endpoint: API.Endpoint, completionHandler: @escaping (DataResponse<Any>) -> Void) {
 
         let manager = Alamofire.SessionManager.default
         manager.startRequestsImmediately = true
         manager.session.configuration.timeoutIntervalForRequest = 180 // seconds
 
-        _ = manager.request(endpoint.path, method: endpoint.method, parameters: endpoint.parameters, encoding: endpoint.encoding, headers: endpoint.headers).responseData { response in
+        _ = manager.request(endpoint.path, method: endpoint.method, parameters: endpoint.parameters, encoding: endpoint.encoding, headers: endpoint.headers).responseJSON { response in
             completionHandler(response)
         }
     }

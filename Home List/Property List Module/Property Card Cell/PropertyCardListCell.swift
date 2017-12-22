@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SDWebImage
 
 class PropertyCardListCell: UITableViewCell {
 
@@ -48,6 +49,7 @@ class PropertyCardListCell: UITableViewCell {
     @IBOutlet weak var displayImage: UIImageView! {
         didSet {
             displayImage.contentMode = .scaleAspectFill
+            displayImage.clipsToBounds = true
         }
     }
 
@@ -90,6 +92,7 @@ class PropertyCardListCell: UITableViewCell {
     private let bag = DisposeBag()
 
     override func prepareForReuse() {
+        viewModel = nil
         sponsoredImageWidthConstraint.constant = 30
     }
 
@@ -126,10 +129,10 @@ class PropertyCardListCell: UITableViewCell {
         }).disposed(by: bag)
 
         favouriteButton.rx
-            .tap
+            .tap.debug("button pressed \(self.propertyNameLabel.text)")
             .bind(to: viewModel.favouriteButtonTrigger).disposed(by: bag)
 
-        viewModel.favouriteSelectionTrigger.subscribe(onNext: { [unowned self] state in
+        viewModel.favouriteSelectionTrigger.debug("test").subscribe(onNext: { [unowned self] state in
             if state {
                 let selectedTitle = String.attributed(string: AppConstants.FontIcon.favoriteFillled,
                                                       color: .brandPrimary, font: .fontIcon(ofSize: 26))
@@ -138,6 +141,13 @@ class PropertyCardListCell: UITableViewCell {
                 let unselectedTitle = String.attributed(string: AppConstants.FontIcon.favouriteUnfilled,
                                                         color: .darkText, font: .fontIcon(ofSize: 26))
                 self.favouriteButton.setAttributedTitle(unselectedTitle, for: .normal)
+            }
+        }).disposed(by: bag)
+        
+        viewModel.photoURL.subscribe(onNext: { [unowned self] urlString in
+            DispatchQueue.main.async {
+                self.displayImage.sd_setShowActivityIndicatorView(true)
+                self.displayImage.sd_setImage(with: URL(string: urlString), completed: nil)
             }
         }).disposed(by: bag)
 

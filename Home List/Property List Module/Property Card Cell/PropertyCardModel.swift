@@ -10,18 +10,18 @@ import Foundation
 import RxSwift
 
 enum Furnishing: String {
-    case full = "FULLY_FURNISHED"
-    case semi = "SEMI_FURNISHED"
-    case none = "NOT_FURNISHED"
+    case full = "Fully Furnished"
+    case semi = "Semi Furnished"
+    case none = "Unfurnished"
 
-    func getValue() -> String {
+    func getAPIValue() -> String {
         switch self {
         case .semi:
-            return "Semi Furnished"
+            return "SEMI_FURNISHED"
         case .full:
-            return "Fully Furnished"
+            return "FULLY_FURNISHED"
         case .none:
-            return "Unfurnished"
+            return "NOT_FURNISHED"
         }
     }
 }
@@ -35,9 +35,10 @@ struct PropertyCardModel {
     var area: Int
     var isFavourite: Variable<Bool> = Variable<Bool>(false)
     var isSponsored: Bool
+    var imageURL: String
 
     init(name: String, address: String, amount: Int, furnishing: Furnishing,
-         bathrooms: Int, area: Int, isFavourite: Bool, isSponsored: Bool) {
+         bathrooms: Int, area: Int, isFavourite: Bool, isSponsored: Bool, imageURL: String) {
         self.name = name
         self.address = address
         self.amount = amount
@@ -46,5 +47,6 @@ struct PropertyCardModel {
         self.area = area
         self.isSponsored = isSponsored
         self.isFavourite.value = isFavourite
+        self.imageURL = imageURL
     }
 }

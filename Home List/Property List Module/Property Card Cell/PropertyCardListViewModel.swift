@@ -21,6 +21,7 @@ protocol PropertyCardListViewModelRepresentable {
     var propertyArea: Observable<Int> { get }
     var sponsoredImageWidthTrigger: Observable<Int> { get }
     var favouriteSelectionTrigger: Observable<Bool> { get }
+    var photoURL: Observable<String> { get }
 }
 
 class PropertyCardListViewModel: PropertyCardListViewModelRepresentable {
@@ -40,6 +41,7 @@ class PropertyCardListViewModel: PropertyCardListViewModelRepresentable {
     var propertyArea: Observable<Int> = Observable<Int>.just(0)
     var sponsoredImageWidthTrigger: Observable<Int> = Observable.just(0)
     var favouriteSelectionTrigger: Observable<Bool> = Observable.just(false)
+    var photoURL: Observable<String> = Observable.just("")
 
     init(model: PropertyCardModel) {
         self.model = model
@@ -50,7 +52,7 @@ class PropertyCardListViewModel: PropertyCardListViewModelRepresentable {
         let amount = model.amount.formatAsMoney()
         propertyAmount = Observable.just(amount)
 
-        let furnishing = model.furnishing.getValue()
+        let furnishing = model.furnishing.rawValue
         let desc = "\(furnishing)\n\(model.bathrooms) Bathrooms"
         propertyDesc = Observable.just(desc)
 
@@ -70,11 +72,20 @@ class PropertyCardListViewModel: PropertyCardListViewModelRepresentable {
         if model.isSponsored {
             sponsoredImageWidthTrigger = Observable.just(30)
         }
+        
+        let displayURL = getPicURL(model.imageURL)
+        photoURL = Observable.just(displayURL)
     }
 
     func call(_ number: String) {
         if let url = URL(string: "tel://\(number)"), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }
+    }
+    
+    func getPicURL(_ url: String) -> String {
+        let base = "http://d3snwcirvb4r88.cloudfront.net/images/"
+        let middle = url.components(separatedBy: "_").first ?? ""
+        return "\(base)\(middle)/\(url)"
     }
 }

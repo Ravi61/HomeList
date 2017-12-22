@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class PropertyListVC: RefreshVC {
+class PropertyListVC: RefreshVC, UITableViewDelegate {
 
     @IBOutlet weak var propertyList: UITableView! {
         didSet {
@@ -41,6 +41,7 @@ class PropertyListVC: RefreshVC {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupNavigationBar(title: "Properties near me")
         setupDependency()
     }
 
@@ -48,7 +49,7 @@ class PropertyListVC: RefreshVC {
         guard let viewModel = viewModel else { return }
 
         viewModel.tableItemsFetched.bind(to: propertyList.rx.items) { tableView, row, cellViewModel in
-            let cell = tableView.dequeueCellOfType(PropertyCardListCell.self, forIndex: IndexPath(row: row, section: 0))
+            let cell = tableView.dequeueReusableCell(withIdentifier: PropertyCardListCell.className, for: IndexPath(row: row, section: 0)) as! PropertyCardListCell
             cell.viewModel = cellViewModel
             cell.selectionStyle = .none
             viewModel.checkPagination.onNext(row)
@@ -63,8 +64,17 @@ class PropertyListVC: RefreshVC {
                 self.hideActivityIndicator()
             }
         }).disposed(by: bag)
+        
+        filterButton.rx
+            .tap
+            .bind(to: viewModel.filterTapped)
+            .disposed(by: bag)
+        
+        viewModel.filterTrigger.subscribe(onNext: { [unowned self] model in
+            let controller = UIStoryboard(name: "HomeListStoryboard", bundle: nil).instantiateViewController(withIdentifier: "FiltersVC") as! FiltersVC
+            controller.viewModel = model
+            let nvc = UINavigationController(rootViewController: controller)
+            self.present(nvc, animated: true, completion: nil)
+        }).disposed(by: bag)
     }
-}
-
-extension PropertyListVC: UITableViewDelegate {
 }
