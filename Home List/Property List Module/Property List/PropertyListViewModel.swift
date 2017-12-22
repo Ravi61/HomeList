@@ -38,10 +38,10 @@ class PropertyListViewModel: PropertyListViewModelRepresentable {
 
     fileprivate var tableItems: Variable<[PropertyCardListViewModel]> = Variable<[PropertyCardListViewModel]>([])
     fileprivate var page: Int = 0
-    private var apartmentString = "" 
+    private var apartmentString = ""
     private var propertyString = ""
     private var furnishingString = ""
-    
+
     private let bag = DisposeBag()
     let filterModel = FilterViewModel()
 
@@ -55,24 +55,24 @@ class PropertyListViewModel: PropertyListViewModelRepresentable {
                 self.getPropertyList(apartmentFilter: self.apartmentString, propertyFilter: self.propertyString, furnishingFilter: self.furnishingString, isFilter: false)
             }
         }).disposed(by: bag)
-        
+
         if page == 0 {
             tableItems.value = []
             getPropertyList(apartmentFilter: apartmentString, propertyFilter: propertyString, furnishingFilter: furnishingString, isFilter: false)
         }
-        
+
         filterModel.apartmentTypeString.asObservable().subscribe(onNext: { [unowned self] str in
             self.apartmentString = str
         }).disposed(by: bag)
-        
+
         filterModel.propertyTypeString.asObservable().subscribe(onNext: { [unowned self] str in
             self.propertyString = str
         }).disposed(by: bag)
-        
+
         filterModel.furnishingTypeString.asObservable().subscribe(onNext: { [unowned self] str in
             self.furnishingString = str
         }).disposed(by: bag)
-        
+
         filterTrigger = filterTapped.map({ _ -> FilterViewModel in
             self.filterModel.filtersApplied = {
                 self.getPropertyList(apartmentFilter: self.apartmentString, propertyFilter: self.propertyString, furnishingFilter: self.furnishingString, isFilter: true)
@@ -84,6 +84,7 @@ class PropertyListViewModel: PropertyListViewModelRepresentable {
 
 extension PropertyListViewModel {
 
+    // fetching property list from api
     func getPropertyList(apartmentFilter: String, propertyFilter: String, furnishingFilter: String, isFilter: Bool) {
         loaderTrigger.onNext(.animate)
         API.request(API.Endpoint.getProperties(withPage: page, apartmentFilter: apartmentFilter, propertyFilter: propertyFilter, furnishingFilter: furnishingFilter)) { [weak self] response in
@@ -96,18 +97,18 @@ extension PropertyListViewModel {
             }
         }
     }
-    
+
     func extractTableItems(model: PropertyListModel, isFilter: Bool) {
         let viewModels = model.data?.map({ property -> PropertyCardListViewModel in
-            
+
             let photoURL = property.photos?.filter({ $0.displayPic == true })
                 .map({ $0.imagesMap?.original ?? "" }).first ?? ""
-            
+
             let model = PropertyCardModel(name: property.propertyTitle ?? "", address: property.street ?? "", amount: property.rent ?? 0, furnishing: Furnishing(rawValue: property.furnishing ?? "") ?? .none, bathrooms: property.bathroom ?? 0, area: property.propertySize ?? 0, isFavourite: false, isSponsored: property.sponsored ?? false, imageURL: photoURL)
 
             return PropertyCardListViewModel(model: model)
         }) ?? []
-        
+
         if isFilter {
             tableItems.value = viewModels
         } else {

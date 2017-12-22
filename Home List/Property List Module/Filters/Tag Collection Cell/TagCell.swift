@@ -22,21 +22,16 @@ class TagCell: UICollectionViewCell {
             bgView.layer.borderColor = UIColor.backgroundGray.cgColor
         }
     }
-    
+
     var model: TagModel? {
         didSet {
             prepare()
         }
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
+
     func prepare() {
         nameLabel.text = model?.name ?? ""
-        
+
         if model?.selected == true {
             bgView.layer.borderColor = UIColor.brandPrimary.cgColor
             nameLabel.textColor = UIColor.brandPrimary

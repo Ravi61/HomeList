@@ -151,9 +151,9 @@ struct AmenitiesMap: Codable {
     let VP: Bool?
 }
 
-struct Score : Codable {
-    
-    let lastUpdatedDate : Int?
-    let lifestyle : Float?
-    let transit : Float?
+struct Score: Codable {
+
+    let lastUpdatedDate: Int?
+    let lifestyle: Float?
+    let transit: Float?
 }

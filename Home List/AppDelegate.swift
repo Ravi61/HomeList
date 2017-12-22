@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         UIApplication.shared.statusBarStyle = .lightContent
-        
+
         let viewmodel = PropertyListViewModel()
         let controller = PropertyListVC.instantiate(fromAppStoryboard: .home)
         controller.viewModel = viewmodel

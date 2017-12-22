@@ -48,7 +48,7 @@ class PropertyListVC: RefreshVC, UITableViewDelegate {
     func setupDependency() {
         guard let viewModel = viewModel else { return }
 
-        viewModel.tableItemsFetched.bind(to: propertyList.rx.items) { tableView, row, cellViewModel in
+        viewModel.tableItemsFetched.bind(to: propertyList.rx.items) { _, row, cellViewModel in
             let cell = self.propertyList.dequeueCellOfType(PropertyCardListCell.self, forIndex: IndexPath(row: row, section: 0))
             cell.viewModel = cellViewModel
             cell.selectionStyle = .none
@@ -64,12 +64,12 @@ class PropertyListVC: RefreshVC, UITableViewDelegate {
                 self.hideActivityIndicator()
             }
         }).disposed(by: bag)
-        
+
         filterButton.rx
             .tap
             .bind(to: viewModel.filterTapped)
             .disposed(by: bag)
-        
+
         viewModel.filterTrigger.subscribe(onNext: { [unowned self] model in
             let controller = FiltersVC.instantiate(fromAppStoryboard: .home)
             controller.viewModel = model

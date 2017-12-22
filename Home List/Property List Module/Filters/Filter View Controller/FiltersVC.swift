@@ -23,7 +23,7 @@ enum ApartmentType: String {
     case threeBHK = "3 BHK"
     case fourBHK = "4 BHK"
     case moreBHK = "4+ BHK"
-    
+
     func getAPIValue() -> String {
         switch self {
         case .rk:
@@ -46,7 +46,7 @@ enum Property: String {
     case apartment = "Apartment"
     case independentHouse = "Independent House/Villa"
     case independentFloor = "Independent Floor/Builder Floor"
-    
+
     func getAPIValue() -> String {
         switch self {
         case .apartment:
@@ -63,7 +63,7 @@ enum Furnishing: String {
     case full = "Fully Furnished"
     case semi = "Semi Furnished"
     case none = "Unfurnished"
-    
+
     func getAPIValue() -> String {
         switch self {
         case .semi:
@@ -86,6 +86,7 @@ class FiltersVC: UIViewController {
             searchIconLabel.textAlignment = .center
         }
     }
+
     @IBOutlet weak var searchTextfield: UITextField! {
         didSet {
             searchTextfield.placeholder = "Search by Locality or Landmark"
@@ -93,6 +94,7 @@ class FiltersVC: UIViewController {
             searchTextfield.font = UIFont.helvetica(withSize: 16)
         }
     }
+
     @IBOutlet weak var filtersTable: UITableView! {
         didSet {
             filtersTable.registerCell(withIdentifier: ApartmentTypeCell.className)
@@ -105,6 +107,7 @@ class FiltersVC: UIViewController {
             filtersTable.tableFooterView = UIView()
         }
     }
+
     @IBOutlet weak var applyButton: UIButton! {
         didSet {
             applyButton.backgroundColor = UIColor.brandPrimary
@@ -113,9 +116,9 @@ class FiltersVC: UIViewController {
             applyButton.setTitleColor(.white, for: .normal)
         }
     }
-    
+
     var viewModel: FilterViewModel?
-    
+
     private let bag = DisposeBag()
 
     override func viewDidLoad() {
@@ -125,24 +128,24 @@ class FiltersVC: UIViewController {
         setupFilterNavigationBar(title: "FILTER BY", closeSelector: #selector(closeSelected), refreshSelector: #selector(refreshSelected))
         setupDependency()
     }
-    
+
     func setupDependency() {
         guard let viewModel = viewModel else { return }
 
         viewModel.dismissTrigger.subscribe(onNext: { [unowned self] _ in
             self.dismiss(animated: true, completion: nil)
         }).disposed(by: bag)
-        
+
         applyButton.rx
             .tap
             .bind(to: viewModel.applyButtonTapped)
             .disposed(by: bag)
     }
-    
+
     @objc func closeSelected() {
         navigationController?.dismiss(animated: true, completion: nil)
     }
-    
+
     @objc func refreshSelected() {
         viewModel?.refreshTrigger.onNext(())
         filtersTable.reloadData()
@@ -150,14 +153,14 @@ class FiltersVC: UIViewController {
 }
 
 extension FiltersVC: UITableViewDelegate, UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ApartmentTypeCell.className, for: indexPath) as! ApartmentTypeCell
         cell.viewModel = viewModel?.items.value[indexPath.row]
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return viewModel?.items.value.count ?? 0
     }
 }

@@ -72,7 +72,7 @@ class PropertyCardListViewModel: PropertyCardListViewModelRepresentable {
         if model.isSponsored {
             sponsoredImageWidthTrigger = Observable.just(30)
         }
-        
+
         let displayURL = getPicURL(model.imageURL)
         photoURL = Observable.just(displayURL)
     }
@@ -82,7 +82,7 @@ class PropertyCardListViewModel: PropertyCardListViewModelRepresentable {
             UIApplication.shared.open(url)
         }
     }
-    
+
     func getPicURL(_ url: String) -> String {
         let base = "http://d3snwcirvb4r88.cloudfront.net/images/"
         let middle = url.components(separatedBy: "_").first ?? ""

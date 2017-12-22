@@ -143,7 +143,7 @@ class PropertyCardListCell: UITableViewCell {
                 self.favouriteButton.setAttributedTitle(unselectedTitle, for: .normal)
             }
         }).disposed(by: bag)
-        
+
         viewModel.photoURL.subscribe(onNext: { [unowned self] urlString in
             DispatchQueue.main.async {
                 self.displayImage.sd_setShowActivityIndicatorView(true)
