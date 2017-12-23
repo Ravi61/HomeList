@@ -129,10 +129,10 @@ class PropertyCardListCell: UITableViewCell {
         }).disposed(by: bag)
 
         favouriteButton.rx
-            .tap.debug("favourite button pressed \(self.propertyNameLabel.text!)")
+            .tap
             .bind(to: viewModel.favouriteButtonTrigger).disposed(by: bag)
 
-        viewModel.favouriteSelectionTrigger.debug("favourite button change \(self.propertyNameLabel.text!)").subscribe(onNext: { [unowned self] state in
+        viewModel.favouriteSelectionTrigger.subscribe(onNext: { [unowned self] state in
             if state {
                 let selectedTitle = String.attributed(string: AppConstants.FontIcon.favoriteFillled,
                                                       color: .brandPrimary, font: .fontIcon(ofSize: 26))

@@ -99,15 +99,18 @@ extension PropertyListViewModel {
     }
 
     func extractTableItems(model: PropertyListModel, isFilter: Bool) {
-        let viewModels = model.data?.map({ property -> PropertyCardListViewModel in
-
+        var viewModels: [PropertyCardListViewModel] = []
+        
+        guard let properties = model.data else { return }
+        
+        for property in properties {
             let photoURL = property.photos?.filter({ $0.displayPic == true })
                 .map({ $0.imagesMap?.original ?? "" }).first ?? ""
-
+            
             let model = PropertyCardModel(name: property.propertyTitle ?? "", address: property.street ?? "", amount: property.rent ?? 0, furnishing: Furnishing(rawValue: property.furnishing ?? "") ?? .none, bathrooms: property.bathroom ?? 0, area: property.propertySize ?? 0, isFavourite: false, isSponsored: property.sponsored ?? false, imageURL: photoURL)
-
-            return PropertyCardListViewModel(model: model)
-        }) ?? []
+            
+            viewModels.append(PropertyCardListViewModel(model: model))
+        }
 
         if isFilter {
             tableItems.value = viewModels
