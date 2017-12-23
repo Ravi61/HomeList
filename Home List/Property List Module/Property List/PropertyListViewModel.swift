@@ -44,13 +44,14 @@ class PropertyListViewModel: PropertyListViewModelRepresentable {
 
     private let bag = DisposeBag()
     let filterModel = FilterViewModel()
+    private var finished: Bool = false
 
     init() {
 
         tableItemsFetched = tableItems.asObservable()
 
         checkPagination.subscribe(onNext: { [unowned self] index in
-            if index == self.tableItems.value.count - 1 {
+            if index == self.tableItems.value.count - 1 && !self.finished {
                 self.page += 1
                 self.getPropertyList(apartmentFilter: self.apartmentString, propertyFilter: self.propertyString,
                                      furnishingFilter: self.furnishingString, isFilter: false)
@@ -94,7 +95,11 @@ extension PropertyListViewModel {
             self?.loaderTrigger.onNext(.stop)
             do {
                 let model: PropertyListModel = try response.mapObject()
-                self?.extractTableItems(model: model, isFilter: isFilter)
+                if let data = model.data, data.count > 0 {
+                    self?.extractTableItems(model: model, isFilter: isFilter)
+                } else {
+                    self?.finished = true
+                }
             } catch {
                 print("Unknown error")
             }
