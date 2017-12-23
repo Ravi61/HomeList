@@ -78,7 +78,7 @@ class PropertyListViewModel: PropertyListViewModelRepresentable {
         filterTrigger = filterTapped.map({ _ -> FilterViewModel in
             self.filterModel.filtersApplied = {
                 self.getPropertyList(apartmentFilter: self.apartmentString, propertyFilter: self.propertyString,
-                                     furnishingFilter: self.furnishingString,isFilter: true)
+                                     furnishingFilter: self.furnishingString, isFilter: true)
             }
             return self.filterModel
         })
@@ -102,7 +102,7 @@ extension PropertyListViewModel {
     }
 
     func extractTableItems(model: PropertyListModel, isFilter: Bool) {
-        
+
         let viewModels = model.data?.map({ property -> PropertyCardListViewModel in
             let photoURL = property.photos?.filter({ $0.displayPic == true })
                 .map({ $0.imagesMap?.original ?? "" }).first ?? ""

@@ -159,7 +159,7 @@ class PropertyCardListCell: UITableViewCell {
             .map {
                 return "1234567890"
             }.bind(to: viewModel.callButtonTrigger).disposed(by: bag)
-        
+
         self.bag = bag
     }
 }
