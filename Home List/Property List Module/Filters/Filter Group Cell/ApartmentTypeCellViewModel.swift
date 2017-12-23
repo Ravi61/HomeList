@@ -57,7 +57,6 @@ class ApartmentTypeCellViewModel {
         }).disposed(by: bag)
 
         prepareItems()
-
         titleString.value = model.title
     }
 

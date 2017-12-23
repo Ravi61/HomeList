@@ -49,7 +49,8 @@ class PropertyListVC: RefreshVC, UITableViewDelegate {
         guard let viewModel = viewModel else { return }
 
         viewModel.tableItemsFetched.bind(to: propertyList.rx.items) { _, row, cellViewModel in
-            let cell = self.propertyList.dequeueCellOfType(PropertyCardListCell.self, forIndex: IndexPath(row: row, section: 0))
+            let cell = self.propertyList.dequeueCellOfType(PropertyCardListCell.self, forIndex: IndexPath(row: row,
+                                                                                                          section: 0))
             cell.viewModel = cellViewModel
             cell.selectionStyle = .none
             viewModel.checkPagination.onNext(row)

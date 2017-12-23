@@ -125,7 +125,8 @@ class FiltersVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setupFilterNavigationBar(title: "FILTER BY", closeSelector: #selector(closeSelected), refreshSelector: #selector(refreshSelected))
+        setupFilterNavigationBar(title: "FILTER BY", closeSelector: #selector(closeSelected),
+                                 refreshSelector: #selector(refreshSelected))
         setupDependency()
     }
 
@@ -155,7 +156,8 @@ class FiltersVC: UIViewController {
 extension FiltersVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ApartmentTypeCell.className, for: indexPath) as! ApartmentTypeCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ApartmentTypeCell.className,
+                                                 for: indexPath) as! ApartmentTypeCell
         cell.viewModel = viewModel?.items.value[indexPath.row]
         return cell
     }

@@ -89,10 +89,11 @@ class PropertyCardListCell: UITableViewCell {
         }
     }
 
-    private let bag = DisposeBag()
+    private var bag: DisposeBag?
 
     override func prepareForReuse() {
         viewModel = nil
+        bag = nil
         sponsoredImageWidthConstraint.constant = 30
     }
 
@@ -102,6 +103,7 @@ class PropertyCardListCell: UITableViewCell {
 
     func setupDependency() {
         guard let viewModel = viewModel else { return }
+        let bag = DisposeBag()
 
         viewModel.sponsoredImageWidthTrigger.subscribe(onNext: { [unowned self] width in
             self.sponsoredImageWidthConstraint.constant = CGFloat(width)
@@ -112,10 +114,11 @@ class PropertyCardListCell: UITableViewCell {
         }).disposed(by: bag)
 
         viewModel.propertyArea.subscribe(onNext: { [unowned self] area in
-            let areaAttributedString = String.attributed(string: "\(area) Sq. ft", color: .darkGray, font: .helveticaBold(withSize: 16))
-            let subtitleAttributedString = String.attributed(string: "\nBuilt up Area", color: .lightText, font: .helveticaLight(withSize: 14))
+            let areaAttributedString = String.attributed(string: "\(area) Sq. ft", color: .darkGray,
+                                                         font: .helveticaBold(withSize: 16))
+            let subtitleAttributedString = String.attributed(string: "\nBuilt up Area", color: .lightText,
+                                                             font: .helveticaLight(withSize: 14))
             areaAttributedString.append(subtitleAttributedString)
-
             self.areaLabel.attributedText = areaAttributedString
         }).disposed(by: bag)
 
@@ -155,6 +158,8 @@ class PropertyCardListCell: UITableViewCell {
             .tap
             .map {
                 return "1234567890"
-            }.debug("call button press \(self.propertyNameLabel.text!)").bind(to: viewModel.callButtonTrigger).disposed(by: bag)
+            }.bind(to: viewModel.callButtonTrigger).disposed(by: bag)
+        
+        self.bag = bag
     }
 }
